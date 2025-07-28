@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PIC Validation</title>
+    <script>
+        function validateForm() {
+            let userId = document.getElementById("UserId").value.trim();
+            let picture = document.getElementById("Picture").value;
+
+            if (userId === "" || isNaN(userId) || userId <= 0) {
+                document.getElementById("error").innerHTML = "User ID must be a positive number.";
+                return false;
+            }
+
+            if (picture === "") {
+                document.getElementById("error").innerHTML = "Please upload a picture.";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <form onsubmit="return validateForm()">
+        <fieldset>
+            <legend>Profile Picture</legend>
+
+            <label for="UserId">User ID</label><br />
+            <input type="text" id="UserId" name="UserId" /><br /><br />
+
+            <label for="Picture">Picture</label><br />
+            <input type="file" id="Picture" name="Picture" /><br /><br />
+
+            <input type="submit" value="Submit" />
+        </fieldset>
+        <p id="error" style="color: blue;"></p>
+    </form>
+</body>
+
+</html>
